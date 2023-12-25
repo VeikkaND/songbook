@@ -1,10 +1,13 @@
+import MainHeader from "./components/MainHeader"
+import SongList from "./components/SongList"
 
 function App() {
 
   return (
     <>
       <div>
-        <p>hello world</p>
+        <MainHeader />
+        <SongList />
       </div>
     </>
   )
