@@ -29,7 +29,11 @@ router.get("/", (req, res) => {
             //TODO fix wrong orders sometimes because of desync
             const line = await readFirstLine(path.resolve(__dirname, `../songs/${file}`))
             i++
-            songs.push(line)
+            const songObject = {
+                title: line,
+                id: i
+            }
+            songs.push(songObject)
             if(i >= max) {
                 res.send(songs).status(200)
             }

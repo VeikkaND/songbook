@@ -1,13 +1,18 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
+import HomePage from './pages/HomePage.jsx'
+import SongPage from './pages/SongPage.jsx'
 import {createBrowserRouter, RouterProvider} from "react-router-dom"
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />
-  }
+    element: <HomePage />
+  },
+  {
+    path: "/:id",
+    element: <SongPage />
+  },
 ])
 
 ReactDOM.createRoot(document.getElementById('root')).render(

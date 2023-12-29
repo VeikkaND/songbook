@@ -1,12 +1,16 @@
-function SongShort(num, title) {
+import { useNavigate } from "react-router-dom"
+
+function SongShort(song) {
+    const navigate = useNavigate()
+
     const handleClick = () => {
-        console.log("song clicked")
+        navigate(`/${song.id}`)
     }
 
     return(
         <div>
             <span onClick={handleClick}>
-                {num} {title}
+                {song.id} {song.title}
             </span>
         </div>
     )
