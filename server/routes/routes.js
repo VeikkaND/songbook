@@ -17,13 +17,16 @@ async function readFirstLine(path) {
     }
 }
 
+let songs = []
+
 router.get("/", (req, res) => {
     try {
         const dir = path.resolve(__dirname, "../songs")
         const files = fs.readdirSync(dir)
         const max = files.length
 
-        let songs = []
+        if(songs.length > 0) songs = []
+
         let i = 0
         files.forEach(async (file) => {
             //TODO fix wrong orders sometimes because of desync
@@ -31,7 +34,8 @@ router.get("/", (req, res) => {
             i++
             const songObject = {
                 title: line,
-                id: i
+                id: i,
+                path: path.resolve(__dirname, `../songs/${file}`)
             }
             songs.push(songObject)
             if(i >= max) {
@@ -45,7 +49,8 @@ router.get("/", (req, res) => {
 
 router.get("/:id", (req, res) => {
     try {
-        // TODO send song file
+        const song = songs.find((s) => s.id == req.params.id)
+        res.sendFile(song.path)
     } catch (err) {
         console.log(err)
     }
