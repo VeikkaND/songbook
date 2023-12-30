@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom"
 import songService from "../services/songs"
 import Markdown from "react-markdown"
 import { useNavigate } from "react-router-dom"
+import MainHeader from "../components/MainHeader"
 
 function SongPage() {
     const {id} = useParams()
@@ -39,6 +40,7 @@ function SongPage() {
 
     return(
         <div>
+            <MainHeader />
             {id} <br />
             <button onClick={handlePrev}>prev</button>
             <button onClick={handleHome}>home</button>
