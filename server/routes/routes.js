@@ -50,7 +50,9 @@ router.get("/", (req, res) => {
 router.get("/:id", (req, res) => {
     try {
         const song = songs.find((s) => s.id == req.params.id)
-        res.sendFile(song.path)
+        res.sendFile(song.path, {headers: {
+            "max": songs.length
+        }})
     } catch (err) {
         console.log(err)
     }

@@ -7,12 +7,14 @@ import { useNavigate } from "react-router-dom"
 function SongPage() {
     const {id} = useParams()
     const [song, setSong] = useState("")
+    const [maxId, setMaxId] = useState(0)
     const navigate = useNavigate()
 
     useEffect(() => {
         async function getSong() {
             const res = await songService.getSongFile(id)
-            setSong(res)
+            setMaxId(parseInt(res.headers.max))
+            setSong(res.data)
         }
         getSong()
     }, [])
@@ -21,15 +23,18 @@ function SongPage() {
 
     const handlePrev = () => {
         if(id >= 2) {
-            console.log("going back")
-            const newId = id - 1
+            const newId = parseInt(id) - 1
             navigate(`/${newId}`)
             window.location.reload(false)
         }
     }
 
     const handleNext = () => {
-        // TODO implement a way to know the max id
+        if(id < maxId) {
+            const newId = parseInt(id) + 1
+            navigate(`/${newId}`)
+            window.location.reload(false)
+        }
     }
 
     return(
