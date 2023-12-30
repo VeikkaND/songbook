@@ -29,16 +29,23 @@ router.get("/", (req, res) => {
 
         let i = 0
         files.forEach(async (file) => {
-            //TODO fix wrong orders sometimes because of desync
             const line = await readFirstLine(path.resolve(__dirname, `../songs/${file}`))
             i++
             const songObject = {
                 title: line,
-                id: i,
+                id: parseInt(file.slice(0, 2)),
                 path: path.resolve(__dirname, `../songs/${file}`)
             }
             songs.push(songObject)
             if(i >= max) {
+                songs.sort((a, b) => {
+                    if(a.id < b.id) {
+                        return -1
+                    } else if (a.id > b.id) {
+                        return 1
+                    }
+                    return 0
+                })
                 res.send(songs).status(200)
             }
         })
