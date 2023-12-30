@@ -4,29 +4,28 @@ import SongShort from "./SongShort"
 
 function SongList() {
     const [songs, setSongs] = useState([])
+    const [matchingSongs, setMatchingSongs] = useState([])
     
     useEffect(() => {
         async function getSongTitles() {
-            console.log("fetching...")
           const res = await songsService.getTitles()
           setSongs(res)
+          setMatchingSongs(res)
         }
         getSongTitles()
     }, [])
 
-    if(songs.length > 0) {
-        return(
-            <div>
-                {songs.map(song => <SongShort title={song.title} 
-                id={song.id} key={song.id}/>)}
-            </div>
-        )
+    const handleInput = (event) => {
+        event.preventDefault()
+        setMatchingSongs(songs.filter(
+            (song) => song.title.includes(event.target.value)))
     }
 
     return(
         <div>
+            <input onChange={handleInput}></input> <br />
             {songs.length > 0
-            ? songs.map(song => <SongShort title={song.title} 
+            ? matchingSongs.map(song => <SongShort title={song.title} 
                 id={song.id} key={song.id}/>)
             : "Loading songs..."
             }
