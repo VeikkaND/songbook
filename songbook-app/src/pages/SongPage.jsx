@@ -2,14 +2,13 @@ import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import songService from "../services/songs"
 import Markdown from "react-markdown"
-import { useNavigate } from "react-router-dom"
 import MainHeader from "../components/MainHeader"
+import NavBar from "../components/NavBar"
 
 function SongPage() {
     const {id} = useParams()
     const [song, setSong] = useState("")
     const [maxId, setMaxId] = useState(0)
-    const navigate = useNavigate()
 
     useEffect(() => {
         async function getSong() {
@@ -20,32 +19,14 @@ function SongPage() {
         getSong()
     }, [])
 
-    const handleHome = () => navigate("/")
-
-    const handlePrev = () => {
-        if(id >= 2) {
-            const newId = parseInt(id) - 1
-            navigate(`/${newId}`)
-            window.location.reload(false)
-        }
-    }
-
-    const handleNext = () => {
-        if(id < maxId) {
-            const newId = parseInt(id) + 1
-            navigate(`/${newId}`)
-            window.location.reload(false)
-        }
-    }
-
     return(
-        <div>
+        <div className="song">
             <MainHeader />
-            {id} <br />
-            <button onClick={handlePrev}>prev</button>
-            <button onClick={handleHome}>home</button>
-            <button onClick={handleNext}>next</button>
-            <Markdown>{song}</Markdown>
+            <NavBar id={id} maxId={maxId}/>
+            <div className="listItem">
+                <h2>{id}. </h2>
+                <Markdown>{song}</Markdown>
+            </div> 
         </div>
     )
 }

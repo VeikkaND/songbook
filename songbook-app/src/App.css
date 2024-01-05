@@ -1,0 +1,73 @@
+body {
+    background: #212121;
+    color: white;
+}
+
+h1 {
+    font-weight: lighter;
+}
+
+.menu {
+    text-align: center;
+}
+
+.listItem {
+    margin-block: 15px;
+}
+.listItem h1, .listItem h2{
+    display: inline;
+    vertical-align: center;
+    font-size: 24px;
+    font-weight: lighter;
+}
+
+input {
+    height: 25px;
+    width: 250px;
+    text-align: center;
+    font-size: 17px;
+    color: white;
+    background-color: #212121;
+    outline: 1px solid #323232;
+    border-bottom: none;
+    border-radius: 10px;
+    border-right: none;
+}
+input:focus-visible {
+    outline: 0px;
+    outline: 1px solid #424242;
+    border-bottom: none;
+    border-radius: 10px;
+    border-right: none;
+}
+
+.song {
+    text-align: center;
+}
+.song .listItem h1, .song .listItem h2{
+    padding-bottom: 5px;
+    border-bottom: 1px solid white;
+}
+.song .listItem h1 {
+    padding-right: 20px;
+}
+.song .listItem h2 {
+    padding-left: 20px;
+}
+
+.navbar {
+    padding-bottom: 30px;
+}
+.navbar button {
+    padding-inline: 15px;
+    padding-block: 7px;
+    margin-inline: 20px;
+    border-radius: 5%;
+    border: 1px solid gray;
+    background-color: #212121;
+    color: white;
+}
+.navbar button:hover {
+    transition-duration: 0.2s;
+    background-color: #323232;
+}

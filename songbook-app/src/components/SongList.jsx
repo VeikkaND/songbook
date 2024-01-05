@@ -23,7 +23,7 @@ function SongList() {
 
     return(
         <div>
-            <input onChange={handleInput}></input> <br />
+            <input onChange={handleInput}></input>
             {songs.length > 0
             ? matchingSongs.map(song => <SongShort title={song.title} 
                 id={song.id} key={song.id}/>)

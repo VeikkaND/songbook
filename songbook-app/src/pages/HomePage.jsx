@@ -6,7 +6,7 @@ function HomePage() {
 
   return (
     <>
-      <div>
+      <div className="menu">
         <MainHeader />
         <SongList />
       </div>
