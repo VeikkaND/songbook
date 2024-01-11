@@ -9,7 +9,7 @@ function SongShort(song) {
     }
 
     return(
-        <div className="listItem" onClick={handleClick}>
+        <div className="listItem" id="songShort" onClick={handleClick}>
             <h2>{song.id}. </h2>
             <Markdown>{song.title}</Markdown>
         </div>

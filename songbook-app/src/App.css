@@ -9,6 +9,11 @@ h1 {
 
 .menu {
     text-align: center;
+    min-height: 90vw;
+}
+
+.header {
+    cursor: pointer;
 }
 
 .listItem {
@@ -23,19 +28,19 @@ h1 {
 
 input {
     height: 25px;
-    width: 250px;
+    width: 40%;
     text-align: center;
     font-size: 17px;
     color: white;
     background-color: #212121;
-    outline: 1px solid #323232;
+    outline: 1px solid #626262;
     border-bottom: none;
     border-radius: 10px;
     border-right: none;
 }
 input:focus-visible {
     outline: 0px;
-    outline: 1px solid #424242;
+    outline: 1px solid #828282;
     border-bottom: none;
     border-radius: 10px;
     border-right: none;
@@ -55,6 +60,16 @@ input:focus-visible {
     padding-left: 20px;
 }
 
+#songShort {
+    width: 40%;
+    margin: auto;
+    text-align: left;
+    padding-top: 15px;
+    padding-bottom: 5px;
+    border-bottom: solid 1px white;
+    cursor: pointer;
+}
+
 .navbar {
     padding-bottom: 30px;
 }
@@ -70,4 +85,13 @@ input:focus-visible {
 .navbar button:hover {
     transition-duration: 0.2s;
     background-color: #323232;
+}
+
+.footer {
+    padding-block: 40px;
+}
+.footer a {
+    color: white;
+    text-decoration: underline;
+    font-family:Arial, Helvetica, sans-serif
 }

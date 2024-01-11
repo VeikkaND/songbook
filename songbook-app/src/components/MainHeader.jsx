@@ -8,7 +8,7 @@ function MainHeader() {
     }
 
     return (
-        <div>
+        <div className="header">
             <h1 onClick={handleClick}>Songbook 🎼</h1>
         </div>
     )
